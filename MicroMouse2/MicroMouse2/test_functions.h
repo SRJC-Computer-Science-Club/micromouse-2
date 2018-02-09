@@ -3,6 +3,10 @@
 
 using namespace micromouse;
 
+/*
+* Test function for the coord class.
+* This comment is better now.
+*/
 coord test_coord()
 {
 	coord c0 = coord(0, 0);
