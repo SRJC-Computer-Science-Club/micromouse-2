@@ -1,0 +1,19 @@
+The following are a collection of notes collected through
+experience working with the magnetic encoders, along with 
+observations made when reading the datasheets.
+
+6:00 PM 3/11/2018
+After reviewing the electrical schematic provided by pololu
+for the magnetic encoder board, I was concerned hall effect
+sensors were wired in the same circuit as motor leads (M1 
+and M2). The schematic indicates a common ground, but does 
+not specify if the ground is unique to the logic components 
+on the board. Fortunately, after viewing the PCB under 
+magnification, along with testing voltages across the logic
+while providing current to M1 and M2, I can confirm all 
+logic leads (Vcc, Out: A and B, GND) are isolated from 
+motor leads (M1 and M2).
+Knowing motor and logic circuits are distinct implies there
+is no need to isolate the logical components on the encoders.
+Furthermore, there is no potential for reverse current or
+polarity being sent back to the pi. 
