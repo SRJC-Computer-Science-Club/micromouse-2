@@ -1,0 +1,31 @@
+The following are a collection of thoughts, regarding circuit
+design and schematic implementation
+
+10:07 PM 3/11/2018
+--------------------------------------------------------------
+After reading datasheets this afternoon there are a few
+notes that should be made, specific to some of the components.
+
+The D24 voltage regulator has Pins power good (PG) and enable
+(EN) which will be unecessary for our application. 
+
+The S18 voltage regulator features a similar enable (EN) pin
+as the D24, which too is unecessary. 
+
+All TOF sensors, include unecessary VDD, GPIO0, and GPIO1 pins. 
+
+The motor driver has two grounds on the motor output side of
+the board, which could be wired in parallel.
+
+The PCA9685 board features a number of unecessary feature pins.
+Uncessary pins include: OE, and V+
+
+In addition to uncecessary module features there are a number 
+of outstanding questions:
+1) Can GPIO voltage and ground pins be wired in parallel?
+2) If we can wire gpio pins in parallel do we gain anything
+by exploiting this configuration?
+3) Where should we locate the diode(s) to prevent back 
+polarity and current flow?
+4)How do we wire PWM output? Which ground is necesary for the
+PWM signal?

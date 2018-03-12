@@ -1,0 +1,11 @@
+Wire Color Definitions:
+RED:: greater than 5V supply
+BLACK:: greater than 5V ground
+WHITE:: Logic (5V) supply
+GRAY:: Logic ground. 
+BLUE:: Digital GPIO
+ORANGE:: Digital GPIO
+BROWN:: Digital Enable/Stanby
+SDA:: Yellow (I2C)
+SCL:: Green (I2C)
+PWM:: Purple
