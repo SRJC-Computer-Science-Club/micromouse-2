@@ -1,0 +1,10 @@
+The following are a series of experiential notes recorded during 
+construction and assembly of circuits containing the pololu
+motor driver (TB6612FNG, item# 713). 
+
+8:50 PM 3/10/2018
+Note that there is no "reverse protection" on the Vcc connection,
+and that this shortcoming will need to be handled with the appropriate
+hardware. Considering the potential destruction of other circuit 
+components if exposed to 12V it will be paramount to isolate Vcc. 
+Use of a diode should be sufficient to prevent reverse current. 
