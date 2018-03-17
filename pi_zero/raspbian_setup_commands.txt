@@ -1,0 +1,206 @@
+/*The following is a sequence of terminal commands to update and upgrade 
+ * Raspbian for development with MSVC. This tutorial assumes a new installation
+ * of Raspbian is running in GUI mode. 
+ * Some informative articles can be found below:
+ * https://www.raspberrypi.org/documentation/configuration/security.md
+ * https://makezine.com/2017/09/07/secure-your-raspberry-pi-against-attackers/
+ * Author: Dan Vyenielo
+ * Date: 30 December 2017
+*/
+
+###############################################################################
+#Install Raspbian with Noobs.
+###############################################################################
+#Self explanitory.
+
+###############################################################################
+#Localize Raspbian For Default pi User.
+###############################################################################
+#On first boot, use the GUI (Menu -> Preferences -> Raspberry Pi Configuration)
+# to setup Raspbian for your respective settings (set locale, set timezone, set 
+# keyboard, set wifi country, and deselect auto login). Change the default pi 
+# user password before connecting to the internet. Take note of the new 
+# password.
+
+#Restart
+$sudo shutdown -r now
+
+###############################################################################
+#Update Raspbian
+###############################################################################
+#Connect to the internet behind a firewall. Then, update and upgrade with the 
+# following command sequence.
+$sudo apt-get --yes update
+$sudo apt-get --yes upgrade
+$sudo apt-get --yes dist-upgrade
+$sudo apt-get --yes check
+$sudo apt-get --yes autoclean
+$sudo apt-get --yes autoremove
+
+#Restart.
+$sudo reboot
+
+#Repeat the same update and upgrade comands again.
+$sudo apt-get --yes update
+$sudo apt-get --yes upgrade
+$sudo apt-get --yes dist-upgrade
+$sudo apt-get --yes check
+$sudo apt-get --yes autoclean
+$sudo apt-get --yes autoremove
+
+#Restart.
+$sudo reboot
+
+###############################################################################
+#Setup a new user account.
+###############################################################################
+#Replace [username] with your desired username in the following commands while
+# setting up a new user account. Follow the prompts, and be sure to set a 
+# strong password for the newly created account. 
+$sudo adduser [username]
+
+#Add the new username to the same groups as the default 'pi' user. First, 
+# determine which groups to add the new username through:
+$groups pi
+
+#The "groups pi" command will return something like (your groups may differ):
+pi : pi adm dialout cdrom sudo audio video plugdev games users input netdev spi i2c gpio
+
+#Copy all groups, excluding the pi group, and paste them below. Remember to 
+# change the username to the new username created a few steps prior.
+$for GROUP in [paste groups here]; do sudo adduser [username] $GROUP; done
+
+#Your command should look something like this, execute it:
+$for GROUP in adm dialout cdrom sudo audio video plugdev games users netdev input spi i2c gpio; do sudo adduser [username] $GROUP; done
+
+###############################################################################
+#Reset root Password
+###############################################################################
+#Set the password too something long and difficult to guess. Take note of the 
+# new password. Use the following command, and follow the prompts:
+$sudo passwd root
+
+###############################################################################
+#Disable the pi account.
+###############################################################################
+#Execute this block of commands while logged in as the pi user.
+$sudo passwd --lock pi
+
+#Restart
+$sudo reboot
+
+#Login to the new [username] account, at the login screen.
+
+###############################################################################
+#Localize Raspbian For The New username User.
+###############################################################################
+#Use the GUI as you did for the default pi user to verify the localization 
+# settings, for the new username user. Access Menu -> Preferences -> Raspberry 
+# Pi Configuration, and set: locale, timezone, keyboard, wifi country for your 
+# respective location, and deselect auto login. In addition, check the 
+# interfaces, and confirm that all services are enabled. Most settings should
+# be the same as the 'pi' user.
+
+#I recommend removing the background image and replacing it with a solid color 
+# (#272822, or #252525 are nice). Image based desktop backgrounds tend to slow
+# down remote access. 
+
+#It maybe that localization through the GUI fails. If this occurs try to to 
+# localize the device using:
+$sudo raspi-config
+
+#Restart
+$sudo reboot
+
+###############################################################################
+#Securing SSH
+###############################################################################
+#Configure SSH settings on the pi. Access the configuration file through a text
+# editor, with command:
+$sudo nano /etc/ssh/sshd_config
+
+#Confirm that the following lines match your configuration file. Update where 
+# necessary. Most changes will simply be a matter of uncommenting the correct
+# line. 
+--------------------------------------------------------
+LoginGraceTime 120
+PermitRootLogin no
+StrictModes yes
+MaxAuthTries 6
+MaxSessions 10
+
+PubkeyAuthentication yes
+AuthorizedKeysFile	.ssh/authorized_keys
+
+PermitEmptyPasswords no
+
+ChallengeResponseAuthentication no
+
+PasswordAuthentication no
+
+UsePAM no
+--------------------------------------------------------
+
+#Generate an authorized SSH key to permit SSH connections between 
+# raspberrypi(host) and foreign computers (client) with the valid private 
+# key.
+
+#Generate private and public keys on the client computer. I will generate keys
+# with PuTTy Gen, but any SSH client with openSSH support will be compatible. 
+# Save the public and private keys on the client computer or somewhere safe.
+
+#Create a .ssh directory in your user's home directory and an authorized_keys 
+# file. Use the following permission settings for the new directory and file.
+$mkdir ~/.ssh
+$chmod 0700 ~/.ssh
+$touch ~/.ssh/authorized_keys
+$chmod 0600 ~/.ssh/authorized_keys
+
+#Open the authorized_keys file with a text editor to paste in the public key 
+# generated through PuTTy. Save your modifications. 
+sudo nano ~/.ssh/authorized_keys
+
+#Your public_key should look something like:
+ssh-rsa <long string of characters>
+
+#Restart ssh.
+sudo systemctl restart ssh
+
+#Connect through ssh to the raspbery pi to verify the new configuration by 
+# logging into the device. 
+
+#Restart.
+sudo reboot
+
+###############################################################################
+#Firewall Configuration
+###############################################################################
+#Install ufw.
+sudo apt-get install ufw
+
+#Enable ufw.
+sudo ufw enable
+
+#Enable SSH.
+sudo ufw allow ssh
+
+#Enable VNC.
+sudo ufw allow vnc
+
+###############################################################################
+#Configuration For Compattibiliy With MSVC
+###############################################################################
+#Install:
+sudo apt-get install openssh-server g++ gdb gdbserver
+
+###############################################################################
+#MSVC Configuration 
+###############################################################################
+#Go to Tools -> Options -> Search for connections -> Connection Manager. Add a
+# connection. Fill out the form:
+Hostname: <of the raspberry pi>
+Port: 22
+Username: <your username> //recommend using root
+Authentication type: Private Key
+Private key file: <directory to> //openssh syntax
+Passphrase: <your private key passphrase>
