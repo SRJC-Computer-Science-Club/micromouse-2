@@ -10,17 +10,21 @@
 
 int main(void)
 {
+	printf("Let their be light...\n");
+	
 	wiringPiSetupSys();
-
 	pinMode(LED, OUTPUT);
-
-	while (true)
+		
+	for (int i = 0; i < 60; i++)
 	{
 		digitalWrite(LED, HIGH);  // On
 		delay(500); // ms
 		digitalWrite(LED, LOW);	  // Off
 		delay(500);
-		printf("Hey!");
+		printf("again!\n");
 	}
+
+	printf("and darkness!\n");
+	
 	return 0;
 }
