@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="utility\Utility.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="drive\Motor.cpp">
+      <Filter>Drive</Filter>
+    </ClCompile>
+    <ClCompile Include="drive\State.cpp">
+      <Filter>Drive</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{d82c9e89-0b78-4829-a797-63b3976b38c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drive">
+      <UniqueIdentifier>{1cdfaca7-a3af-4559-8890-8ab7b6ec9ee9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="config.h" />
+    <ClInclude Include="utility\Utility.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="drive\Motor.h">
+      <Filter>Drive</Filter>
+    </ClInclude>
+    <ClInclude Include="drive\State.h">
+      <Filter>Drive</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

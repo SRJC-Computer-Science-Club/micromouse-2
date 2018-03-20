@@ -51,9 +51,16 @@
     </RemotePostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="drive\Motor.cpp" />
+    <ClCompile Include="drive\State.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="utility\Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="config.h" />
+    <ClInclude Include="drive\Motor.h" />
+    <ClInclude Include="drive\State.h" />
+    <ClInclude Include="utility\Utility.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
