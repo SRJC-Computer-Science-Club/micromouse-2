@@ -1,5 +1,7 @@
+
 #include <wiringPi.h>
 #include <stdio.h>
+#include "drive/Motor.h"
 
 // LED Pin - wiringPi pin 0 is BCM_GPIO 17.
 // we have to use BCM numbering when initializing with wiringPiSetupSys
@@ -8,8 +10,17 @@
 // which uses gpio export for setup for wiringPiSetupSys
 #define	LED	17
 
+void motorTest()
+{
+	Drive::Motor A;
+	A.setPin(1, 0);
+}
+
 int main(void)
 {
+	
+	motorTest();
+	
 	printf("Let their be light...\n");
 	
 	wiringPiSetupSys();

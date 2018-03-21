@@ -13,6 +13,8 @@ namespace Drive
 		friend bool operator==(const State& left, const State& right);
 		friend bool operator!=(const State& left, const State& right);
 	};
+	bool operator==(const State& left, const State& right);
+	bool operator!=(const State& left, const State& right);
 
 	/*****************************************************************************
 	forward is a Motor::State specified on the toshiba TB6612FNG datasheet.

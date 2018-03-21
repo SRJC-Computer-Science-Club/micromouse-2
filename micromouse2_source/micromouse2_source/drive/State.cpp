@@ -8,7 +8,7 @@ Drive::State::State()
 
 Drive::State::State(const int& in1, const int& in2)
 {
-	if (Utility::isValidDigitalPinvalue(in1) && Utility::isValidDigitalPinvalue(in2))
+	if (Utility::isValidDigitalPinValue(in1) && Utility::isValidDigitalPinValue(in2))
 	{
 		digital_pin_in1_value = in1;
 		digital_pin_in2_value = in2;
