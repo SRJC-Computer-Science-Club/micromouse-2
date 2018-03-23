@@ -57,5 +57,10 @@ namespace Drive
 		const static std::string FAILURE_TO_READ_STATE;
 		const static std::string FAILURE_TO_WRITE_STATE;
 		const static std::string FAILURE_TO_SET_PIN;
+
+		const static Drive::State FORWARD;
+		const static Drive::State BACKWARD;
+		const static Drive::State SHORT_BRAKE;
+		const static Drive::State STOP;
 	};
 }

@@ -14,6 +14,11 @@ void motorTest()
 {
 	Drive::Motor A;
 	A.setPin(1, 0);
+	A.forward();
+	A.stop();
+	A.backward();
+	A.shortBrake();
+	A.stop();
 }
 
 int main(void)
@@ -26,6 +31,18 @@ int main(void)
 	wiringPiSetupSys();
 	pinMode(LED, OUTPUT);
 		
+	int pin = 17;
+	for (int i = 0; i < 60; i++)
+	{
+		printf("%i\n", digitalRead(pin));
+		digitalWrite(LED, HIGH);
+		printf("%i\n", digitalRead(pin));
+		digitalWrite(LED, LOW);
+	}
+	
+	
+
+	/*
 	for (int i = 0; i < 60; i++)
 	{
 		digitalWrite(LED, HIGH);  // On
@@ -36,6 +53,7 @@ int main(void)
 	}
 
 	printf("and darkness!\n");
-	
+	*/
+
 	return 0;
 }

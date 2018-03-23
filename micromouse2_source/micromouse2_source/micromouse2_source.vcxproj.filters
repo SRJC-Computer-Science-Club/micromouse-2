@@ -31,5 +31,8 @@
     <ClInclude Include="drive\State.h">
       <Filter>Drive</Filter>
     </ClInclude>
+    <ClInclude Include="drive\Motor_constants.h">
+      <Filter>Drive</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

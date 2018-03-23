@@ -1,19 +1,5 @@
 #include "Motor.h"
-
-const int Drive::Motor::DEFAULT_PIN = -1;
-const int Drive::Motor::ROTATE_FORWARD_CCW = 1;
-const int Drive::Motor::ROTATE_BACKWARD_CW = -1;
-const int Drive::Motor::SPEED_CONSTANT = -1;
-const int Drive::Motor::DURATION_INDEFINITE = -1;
-
-const std::string Drive::Motor::INVALID_STATE_PIN_NOT_SET = "invalid state pin not set";
-const std::string Drive::Motor::INVALID_STATE_DIFFERENCE = "invalid state (current and desired states differ)";
-const std::string Drive::Motor::INVALID_ROTATION_DIRECTION = "invalid rotation direction";
-const std::string Drive::Motor::INVALID_MOTOR_PIN_ID = "invalid motor pin id";
-
-const std::string Drive::Motor::FAILURE_TO_READ_STATE = "digitalRead() failed to read state";
-const std::string Drive::Motor::FAILURE_TO_WRITE_STATE = "digitalWrite() failed to write state";
-const std::string Drive::Motor::FAILURE_TO_SET_PIN = "failed to set pin";
+#include "Motor_constants.h"
 
 /*
 Default constructs a motor object.
