@@ -43,11 +43,11 @@ namespace Drive
 		int digital_pin_in2_;
 	
 	private:
-		const static int DEFAULT_PIN;// = -1;
-		const static int ROTATE_FORWARD_CCW;// = 1;
-		const static int ROTATE_BACKWARD_CW;// = -1;
-		const static int SPEED_CONSTANT;// = -1;
-		const static int DURATION_INDEFINITE;// = -1;
+		const static int DEFAULT_PIN;
+		const static int ROTATE_FORWARD_CCW;
+		const static int ROTATE_BACKWARD_CW;
+		const static int SPEED_CONSTANT;
+		const static int DURATION_INDEFINITE;
 
 		const static std::string INVALID_STATE_PIN_NOT_SET;
 		const static std::string INVALID_STATE_DIFFERENCE;

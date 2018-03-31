@@ -52,6 +52,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="drive\Motor.cpp" />
+    <ClCompile Include="drive\PWM.cpp" />
     <ClCompile Include="drive\State.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utility\Utility.cpp" />
@@ -60,6 +61,8 @@
     <ClInclude Include="config.h" />
     <ClInclude Include="drive\Motor.h" />
     <ClInclude Include="drive\Motor_constants.h" />
+    <ClInclude Include="drive\PWM.h" />
+    <ClInclude Include="drive\PWM_constants.h" />
     <ClInclude Include="drive\State.h" />
     <ClInclude Include="utility\Utility.h" />
   </ItemGroup>
