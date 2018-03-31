@@ -11,6 +11,9 @@
     <ClCompile Include="drive\State.cpp">
       <Filter>Drive</Filter>
     </ClCompile>
+    <ClCompile Include="drive\PWM.cpp">
+      <Filter>Drive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Utility">
@@ -32,6 +35,12 @@
       <Filter>Drive</Filter>
     </ClInclude>
     <ClInclude Include="drive\Motor_constants.h">
+      <Filter>Drive</Filter>
+    </ClInclude>
+    <ClInclude Include="drive\PWM_constants.h">
+      <Filter>Drive</Filter>
+    </ClInclude>
+    <ClInclude Include="drive\PWM.h">
       <Filter>Drive</Filter>
     </ClInclude>
   </ItemGroup>
