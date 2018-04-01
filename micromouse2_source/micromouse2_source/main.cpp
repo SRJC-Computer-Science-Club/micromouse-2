@@ -1,6 +1,7 @@
 #include <wiringPi.h>
 #include <stdio.h>
 #include "drive/Motor.h"
+#include "drive/PWM.h"
 
 // LED Pin - wiringPi pin 0 is BCM_GPIO 17.
 // we have to use BCM numbering when initializing with wiringPiSetupSys
@@ -20,9 +21,17 @@ void motorTest()
 	A.stop();
 }
 
+void pwmTest()
+{
+	Drive::PWM A;
+	A.setup(1);
+	Drive::PWM B(1);
+	std::printf("%f",A.getFrequency());
+}
+
 int main(void)
 {
-	
+	pwmTest();
 	motorTest();
 	
 	printf("Let their be light...\n");

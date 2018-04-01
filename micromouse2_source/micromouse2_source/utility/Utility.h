@@ -11,4 +11,5 @@ namespace Utility
 	const extern std::string INVALID_PIN_INDEX;
 	const extern int GPIO_MIN_PIN_INDEX;
 	const extern int GPIO_MAX_PIN_INDEX;
+	const extern int WIRING_PI_ERROR;
 }
