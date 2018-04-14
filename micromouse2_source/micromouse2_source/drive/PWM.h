@@ -1,5 +1,9 @@
 #pragma once
 #include <string>
+//http://wiringpi.com/reference/i2c-library/
+//https://github.com/WiringPi/WiringPi/tree/master/wiringPi
+//https://learn.sparkfun.com/tutorials/raspberry-pi-spi-and-i2c-tutorial
+//https://www.waveshare.com/wiki/Raspberry_Pi_Tutorial_Series:_I2C
 
 namespace Drive
 {
